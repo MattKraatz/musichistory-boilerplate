@@ -3,11 +3,100 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Music History</title>
+  <title>Odd Future Music History</title>
+  <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 
 <body>
 
+<nav>
+  <ul>
+    <li><a href="#">View Music</a></li>
+    <li><a href="#">Add Music</a></li>
+    <li><a href="#">Profile</a></li>
+  </ul>
+</nav>
+
+<section class="searchColumn">
+  <form>
+    <label>Song Length: 
+      <input type="range" name="songLength">
+    </label>
+    <label>Artist: 
+      <select name="artist">
+        <option value="tylerTheCreator">Tyler, the Creator</option>
+        <option value="frankOcean">Frank Ocean</option>
+        <option value="domoGenesis">Domo Genesis</option>
+        <option value="earlSweatshirt">Earl Sweatshirt</option>
+        <option value="mellowHype">Mellow Hype</option>
+        <option value="theInternet">The Internet</option>
+      </select>
+    </label>
+    <label>Album: 
+      <select name="album">
+      <option value="tyler_Bastard">Bastard - Tyler, the Creator</option>
+      <option value="tyler_Goblin">Goblin - Tyler, the Creator</option>
+      <option value="tyler_Wolf">Wolf - Tyler, the Creator</option>
+      <option value="tyler_CherryBomb">Cherry Bomb - Tyler, the Creator</option>
+      <option value="frank_ChannelOrange">channel ORANGE - Frank Ocean</option>
+      <option value="domo_Genesis">Genesis - Domo Genesis</option>
+      <option value="earl_Doris">Doris - Earl Sweatshirt</option>
+      <option value="earl_IDont">I Don't Like Shit... - Earl Sweatshirt</option>
+      <option value="mellow_Numbers">Numbers - MellowHype</option>
+      <option value="theInternet_FeelGood">Feel Good - The Internet</option>
+      <option value="theInternet_EgoDeath">Ego Death - The Internet</option>
+      </select>
+    </label>
+    <p>Genre: </p>
+    <label class="checkbox" >
+      <input type="checkbox" name="genre" value="hip-hop">Hip-Hop
+    </label>
+    <label class="checkbox" >
+      <input type="checkbox" name="genre" value="trap">Trap
+    </label>
+    <label class="checkbox" >
+      <input type="checkbox" name="genre" value="soul">Soul
+    </label>
+    <label class="checkbox" >
+      <input type="checkbox" name="genre" value="jazz">Jazz
+    </label>
+  </form>
+</section>
+
+<section class="displayColumn">
+  <article>
+  <h2>Yonkers</h2>
+  <ul>
+    <li>Tyler, the Creator</li>
+    <li>Goblin</li>
+    <li>Hip-Hop</li>
+  </ul>
+  <article>
+    <article>
+  <h2>Thinkin Bout You</h2>
+  <ul>
+    <li>Frank Ocean</li>
+    <li>channel ORANGE</li>
+    <li>Soul</li>
+  </ul>
+  <article>
+    <article>
+  <h2>NFWGJDSH</h2>
+  <ul>
+    <li>MellowHype</li>
+    <li>Numbers</li>
+    <li>Trap</li>
+  </ul>
+  <article>
+    <article>
+  <h2>Under Control</h2>
+  <ul>
+    <li>The Internet</li>
+    <li>Ego Death</li>
+    <li>Jazz</li>
+  </ul>
+  <article>
+</section>
 
 </body>
 </html>

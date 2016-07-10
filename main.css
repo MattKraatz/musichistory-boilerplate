@@ -1,0 +1,62 @@
+* {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+nav {
+  margin: 10px;
+  border: 2px solid black;
+  background: #FFB4B0;
+  padding: 0 20px;
+}
+
+nav ul {
+  padding: 0;
+}
+
+ul li {
+  display: inline-block;
+  list-style: none;
+  padding: 5px;
+  border-right: 2px solid black;
+}
+
+ul li:last-child {
+  border-right: none;
+}
+
+.searchColumn {
+  float: left;
+  margin: 10px;
+  background: #4DD7FA;
+  border: 2px solid black;
+  padding: 10px;
+}
+
+.searchColumn form label:not(.checkbox),
+.searchColumn form label select {
+  display: block;
+}
+
+input,
+select {
+  margin-bottom: 2em;
+}
+
+.displayColumn {
+  margin: 10px;
+  display: inline-block;
+  border: 2px solid black;
+  background: #FEFAC0;
+  width: 500px;
+  padding: 1em;
+}
+
+.displayColumn ul {
+  padding: 0;
+}
+
+.displayColumn h2 {
+  color: #785616;
+  font-weight: normal;
+  margin: 0;
+}
