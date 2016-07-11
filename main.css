@@ -25,10 +25,30 @@ nav {
 
 ul, label {
   font-size: .9em;
+  padding: 0 .25em;
 }
 
-input, select {
+input {
+  margin: .9em .65em .9em 0em;
+}
+
+select {
   margin: .9em 0;
+}
+
+input[type=submit], select {
+  border: 2px solid black;
+  border-radius: 5px;
+  background: white;
+  font-size: 1em;
+}
+
+input[type=submit] {
+  background: lightgrey;
+}
+
+select {
+  width: 200px;
 }
 
 p {
