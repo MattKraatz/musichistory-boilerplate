@@ -96,6 +96,7 @@ ul li:last-child {
   background: #FEFAC0;
   width: 510px;
   padding: 1.5em;
+  overflow: scroll;
 }
 
 .displayColumn ul {
