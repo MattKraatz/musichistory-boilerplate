@@ -108,3 +108,7 @@ ul li:last-child {
   font-weight: normal;
   margin: 0;
 }
+
+.hidden {
+  display: none;
+}

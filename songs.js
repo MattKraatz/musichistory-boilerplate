@@ -1,3 +1,5 @@
+// Data handling and publishing from Exercise 2
+
 var songTitles = [];
 var songDetails = [];
 var printOut = "";
@@ -21,11 +23,38 @@ for (i in songs) {
 for (i in songs) {
   songTitles[i] = songs[i].slice(0,(songs[i].indexOf("-")-1));
   songDetails[i] = songs[i].slice((songs[i].indexOf("-")+2),songs[i].length);
-  printOut += "<article><h2>" + songTitles[i] + "</h2>" + "<ul><li>" + songDetails[i] + "</li></ul></article>";
+  document.getElementById("displayColumn").innerHTML += "<article><h2>" + songTitles[i] + "</h2>" + "<ul><li>" + songDetails[i] + "</li></ul></article>";
 };
 
-console.log(songTitles);
-console.log(songDetails);
-console.log(printOut);
+// Adding click event to all a tags, calling SPA Handler function
 
-document.getElementById("displayColumn").innerHTML = printOut;
+var links = document.querySelectorAll("a")
+
+for (var i = 0; i < links.length; i++) {
+  links[i].addEventListener("click", spaHandler)
+}
+
+function spaHandler(e) {
+  if (e.target.hash === "#addMusic") {
+    listMusic.classList.add("hidden");
+    addMusic.classList.remove("hidden")
+  } else if (e.target.hash === "") {
+    addMusic.classList.add("hidden");
+    listMusic.classList.remove("hidden")
+  }
+}
+
+// Adding click event to Add Music button and writing any input to the DOM
+
+addButton.addEventListener("click", addInput);
+
+function addInput() {
+  var inputs = document.querySelectorAll("input");
+  songTitles.push(inputs[0].value);
+  songDetails.push("by " + inputs[1].value + " on the album " + inputs[2].value);
+  var i = songTitles.length - 1;
+  document.getElementById("displayColumn").innerHTML += "<article><h2>" + songTitles[i] + "</h2>" + "<ul><li>" + songDetails[i] + "</li></ul></article>";
+  inputs[0].value = "";
+  inputs[1].value = "";
+  inputs[2].value = "";
+}
