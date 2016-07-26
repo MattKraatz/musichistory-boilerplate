@@ -42,18 +42,6 @@ function addInput() {
   inputs[2].value = "";
 }
 
-// XML data request and parser
-
-function dataLoader () {
-  var songs = JSON.parse(xhr.responseText).songs;
-  displaySongs(songs)
-}
-
-var xhr = new XMLHttpRequest();
-xhr.addEventListener('load',dataLoader);
-xhr.open('GET','songs.json');
-xhr.send();
-
 // Song printing function
 
 function displaySongs (songs) {
@@ -75,16 +63,23 @@ function deleteSong() {
   event.target.parentNode.parentNode.removeChild(event.target.parentNode)
 }
 
+// XML data request and parser
+
+
+function getJSON(url,callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.addEventListener('load',function(){
+    var data = JSON.parse(xhr.responseText).songs;
+    callback(data);
+  });
+  xhr.open('GET',url);
+  xhr.send();
+}
+
+getJSON('songs.json',displaySongs)
+
 // Add songs button
 
 function moreSongs() {
-  function dataLoader2 () {
-    var songs = JSON.parse(xhr2.responseText).songs;
-    displaySongs(songs)
-  }
-
-  var xhr2 = new XMLHttpRequest();
-  xhr2.addEventListener('load',dataLoader2);
-  xhr2.open('GET','moresongs.json');
-  xhr2.send();
+  getJSON('moresongs.json',displaySongs)
 }
