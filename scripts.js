@@ -1,85 +1,79 @@
-// Data handling and publishing from Exercise 2
-
-var songTitles = [];
-var songDetails = [];
-var printOut = "";
-var songs = [];
-
 // Adding click event to all a tags, calling SPA Handler function
 
-var links = document.querySelectorAll("a")
+var links = $('a')
 
 for (var i = 0; i < links.length; i++) {
-  links[i].addEventListener("click", spaHandler)
+  $(links[i]).click(spaHandler)
 }
 
 function spaHandler(e) {
-  if (e.target.hash === "#addMusic") {
-    listMusic.classList.add("hidden");
-    addMusic.classList.remove("hidden")
-  } else if (e.target.hash === "") {
-    addMusic.classList.add("hidden");
-    listMusic.classList.remove("hidden")
+  if (this.hash === '#addMusic') {
+    $(listMusic).addClass('hidden');
+    $(addMusic).removeClass('hidden');
+    $(links).removeClass('active')
+    $(links[1]).addClass('active')
+  } else if (this.hash === '') {
+    $(addMusic).addClass('hidden');
+    $(listMusic).removeClass('hidden')
+    $(links).removeClass('active')
+    $(links[0]).addClass('active')
+  } else if (this.hash === '#profile') {
+    $(links).removeClass('active')
+    $(links[2]).addClass('active')
   }
 }
 
 // Adding click event to Add Music button and writing any input to the DOM
 
-addButton.addEventListener("click", addInput);
+$(addButton).click(addInput);
 
 function addInput() {
-  var inputs = document.querySelectorAll("input");
-  displayColumn.innerHTML += `
+  var inputs = $('input');
+  $(displayColumn).append(`
     <article>
       <h2>${inputs[0].value}</h2>
         <ul><li>
       by ${inputs[1].value} on the album ${inputs[2].value}
         </li></ul>
-    <button class="delete" onclick="deleteSong()">Delete</button>
-    </article>`
-  inputs[0].value = "";
-  inputs[1].value = "";
-  inputs[2].value = "";
+    <button class='delete' onclick='deleteSong()'>Delete</button>
+    </article>`)
+  for (i in inputs) {
+    inputs[i].value = ''
+  }
 }
 
-// Song printing function
+// Printing function for JSON
 
 function displaySongs (songs) {
   for (var j = 0; j < songs.length; j++){
-    displayColumn.innerHTML += `
+    $(displayColumn).append(`
       <article>
         <h2>${songs[j].title}</h2>
           <ul><li>
         by ${songs[j].artist} on the album ${songs[j].album}
           </li></ul>
-      <button class="delete" onclick="deleteSong()">Delete</button>
-      </article>`
+      <button class='delete' onclick='deleteSong()'>Delete</button>
+      </article>`)
   }
 }
 
 // Delete button function
 
 function deleteSong() {
-  event.target.parentNode.parentNode.removeChild(event.target.parentNode)
+  $(event.target.parentNode).remove()
 }
 
 // XML data request and parser
 
-
-function getJSON(url,callback) {
-  var xhr = new XMLHttpRequest();
-  xhr.addEventListener('load',function(){
-    var data = JSON.parse(xhr.responseText).songs;
-    callback(data);
-  });
-  xhr.open('GET',url);
-  xhr.send();
-}
-
-getJSON('songs.json',displaySongs)
+$.getJSON('songs.json')
+  .then(data => data.songs)
+  .then(displaySongs)
 
 // Add songs button
 
+var extraSongs = $.getJSON('moresongs.json').then(data => data.songs)
+
 function moreSongs() {
-  getJSON('moresongs.json',displaySongs)
+  extraSongs.then(displaySongs)
+  $('#more').prop('disabled',true)
 }

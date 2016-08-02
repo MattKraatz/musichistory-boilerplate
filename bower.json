@@ -1,0 +1,20 @@
+{
+  "name": "musichistory-boilerplate",
+  "homepage": "https://github.com/MattKraatz/musichistory-boilerplate",
+  "authors": [
+    "Matt Kraatz <matt.kraatz@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}
