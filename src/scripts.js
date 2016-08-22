@@ -1,25 +1,26 @@
+
 // Adding click event to all a tags, calling SPA Handler function
 
-var links = $('a')
+var links = $('a');
 
 for (var i = 0; i < links.length; i++) {
-  $(links[i]).click(spaHandler)
+  $(links[i]).click(spaHandler);
 }
 
 function spaHandler(e) {
   if (this.hash === '#addMusic') {
     $(listMusic).addClass('hidden');
     $(addMusic).removeClass('hidden');
-    $(links).removeClass('active')
-    $(links[1]).addClass('active')
+    $(links).removeClass('active');
+    $(links[1]).addClass('active');
   } else if (this.hash === '') {
     $(addMusic).addClass('hidden');
-    $(listMusic).removeClass('hidden')
-    $(links).removeClass('active')
-    $(links[0]).addClass('active')
+    $(listMusic).removeClass('hidden');
+    $(links).removeClass('active');
+    $(links[0]).addClass('active');
   } else if (this.hash === '#profile') {
-    $(links).removeClass('active')
-    $(links[2]).addClass('active')
+    $(links).removeClass('active');
+    $(links[2]).addClass('active');
   }
 }
 
@@ -36,9 +37,9 @@ function addInput() {
       by ${inputs[1].value} on the album ${inputs[2].value}
         </li></ul>
     <button class='delete' onclick='deleteSong()'>Delete</button>
-    </article>`)
+    </article>`);
   for (i in inputs) {
-    inputs[i].value = ''
+    inputs[i].value = '';
   }
 }
 
@@ -53,27 +54,29 @@ function displaySongs (songs) {
         by ${songs[j].artist} on the album ${songs[j].album}
           </li></ul>
       <button class='delete' onclick='deleteSong()'>Delete</button>
-      </article>`)
+      </article>`);
   }
 }
 
 // Delete button function
 
 function deleteSong() {
-  $(event.target.parentNode).remove()
+  $(event.target.parentNode).remove();
 }
 
 // XML data request and parser
 
-$.getJSON('songs.json')
+$.getJSON('src/songs.json')
   .then(data => data.songs)
-  .then(displaySongs)
+  .then(displaySongs);
 
 // Add songs button
 
-var extraSongs = $.getJSON('moresongs.json').then(data => data.songs)
+var extraSongs = $.getJSON('src/moresongs.json').then(data => data.songs);
 
 function moreSongs() {
-  extraSongs.then(displaySongs)
-  $('#more').prop('disabled',true)
+  extraSongs.then(displaySongs);
+  $('#more').prop('disabled',true);
 }
+
+$('#more').click(moreSongs);
